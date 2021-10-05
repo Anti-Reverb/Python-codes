@@ -2,7 +2,7 @@
 - 👀 I’m interested in Java
 - 🌱 I’m currently learning Web development
 - 💞️ I’m looking to collaborate on Android development using Java
-- 📫 How to reach me @shakearyan on twitter or @itsshakearyan on Instagram
+- 📫 How to reach me aryanzs@icloud.com or aryanzs786@gmail.com
 
 <!---
 Anti-Reverb/Anti-Reverb is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

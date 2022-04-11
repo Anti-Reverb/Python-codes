@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @Anti-Reverb
 - 👀 I’m interested in Java
-- 🌱 I’m currently learning Web development
+- 🌱 I’m currently working as a QA Tester
 - 💞️ I’m looking to collaborate on Android development using Java
 - 📫 How to reach me aryanzs@icloud.com or aryanzs786@gmail.com
 

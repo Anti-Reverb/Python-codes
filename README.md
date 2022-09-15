@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Anti-Reverb
+- 👋 Hi, I’m Aryan Shaikh
 - 👀 I’m interested in Java
 - 🌱 I’m currently working as a QA Tester
 - 💞️ I’m looking to collaborate on Android development using Java

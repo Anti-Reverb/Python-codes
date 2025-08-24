@@ -1,7 +1,7 @@
 - 👋 Hi, I’m Aryan Shaikh
 - 👀 I’m interested in Java
-- 🌱 I’m currently working as a QA Tester
-- 💞️ I’m looking to collaborate on Android development using Java
+- 🌱 I’m currently working as a Linux Systems Administrator
+- 💞️ I’m looking to collaborate on setting up Linux based Infrastructure and automation using tools
 - 📫 How to reach me aryanzs@icloud.com or aryanzs786@gmail.com
 
 <!---

@@ -1,0 +1,34 @@
+name: Heatmap Booster
+
+on:
+  schedule:
+    - cron: "0 9 * * 1-5"   # runs daily at 9am UTC
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Fake real dev work
+        run: |
+          files=("README.md" "main.py" "utils.py" "config.yaml" "docs/notes.md")
+          msgs=("Fix typo" "Refactor code" "Improve docs" "Update config" "Optimize function" "Add test case" "Cleanup unused vars" "Minor improvements")
+
+          # pick random file
+          file=${files[$RANDOM % ${#files[@]}]}
+          mkdir -p $(dirname $file)
+
+          # make it look like a small change
+          echo "# change $RANDOM" >> $file
+
+          # pick random commit message
+          msg=${msgs[$RANDOM % ${#msgs[@]}]}
+
+          git config user.name "heatmap-bot"
+          git config user.email "bot@example.com"
+
+          git add "$file"
+          git commit -m "$msg"
+          git push

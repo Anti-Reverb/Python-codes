@@ -1,8 +1,8 @@
-name: Heatmap Booster
+name: Organic Heatmap
 
 on:
   schedule:
-    - cron: "0 9 * * 1-5"   # runs daily at 9am UTC
+    - cron: "0 8 * * *"   # runs daily at 8am UTC
   workflow_dispatch:
 
 jobs:
@@ -11,24 +11,43 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Fake real dev work
+      - name: Organic-style commits
         run: |
-          files=("README.md" "main.py" "utils.py" "config.yaml" "docs/notes.md")
-          msgs=("Fix typo" "Refactor code" "Improve docs" "Update config" "Optimize function" "Add test case" "Cleanup unused vars" "Minor improvements")
+          # 20% chance to skip today (no commits)
+          if [ $((RANDOM % 5)) -eq 0 ]; then
+            echo "Skipping commits today (keeping it organic)"
+            exit 0
+          fi
 
-          # pick random file
-          file=${files[$RANDOM % ${#files[@]}]}
-          mkdir -p $(dirname $file)
+          files=("README.md" "main.py" "utils.py" "config.yaml" "docs/notes.md" "tests/test_main.py")
+          msgs=("Fix typo" "Refactor code" "Improve docs" "Update config" "Optimize function"
+                "Add test case" "Cleanup unused vars" "Improve error handling"
+                "Add comments" "Update docs" "Fix edge case" "Polish code")
 
-          # make it look like a small change
-          echo "# change $RANDOM" >> $file
-
-          # pick random commit message
-          msg=${msgs[$RANDOM % ${#msgs[@]}]}
+          # Random number of commits for today (1–4)
+          num_commits=$(( (RANDOM % 4) + 1 ))
 
           git config user.name "heatmap-bot"
           git config user.email "bot@example.com"
 
-          git add "$file"
-          git commit -m "$msg"
+          for i in $(seq 1 $num_commits); do
+            file=${files[$RANDOM % ${#files[@]}]}
+            mkdir -p $(dirname $file)
+
+            # Make realistic-looking change (append or remove)
+            if [ $((RANDOM % 2)) -eq 0 ]; then
+              echo "# change $RANDOM" >> "$file"
+            else
+              sed -i '$d' "$file" 2>/dev/null || echo "# new file" >> "$file"
+            fi
+
+            msg=${msgs[$RANDOM % ${#msgs[@]}]}
+
+            git add "$file"
+            git commit -m "$msg"
+
+            # Sleep a random number of seconds to spread commit times
+            sleep $((RANDOM % 120))
+          done
+
           git push
